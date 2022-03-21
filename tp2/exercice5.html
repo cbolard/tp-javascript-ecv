@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP2 - ex5</title>
-    <script src="./script5.js"></script>
 </head>
+
 <body>
     <img id="img1" width="240" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Aristoteles_Louvre.jpg" alt="">
     <img id="img2" width="240" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Aristoteles_Louvre.jpg" alt="">
     <img id="img3" width="240" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Aristoteles_Louvre.jpg" alt="">
 
-   
+
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        const img = document.querySelectorAll("img");
+
+        for (let i = 0; i < img.length; i++) {
+
+            img[i].addEventListener('mouseover', () => {
+                img[i].style = 'transform: scale(3); transition: transform .2s; '
+            });
+
+            img[i].addEventListener('mouseout', () => {
+                img[i].style = 'transform: scale(1); transition: transform .2s; '
+
+            });
+
+        }
+
+    });
+</script>
+
 </html>

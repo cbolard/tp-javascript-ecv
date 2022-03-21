@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP2 - ex6</title>
     <script src="./script6.js"></script>
 </head>
-<body>
-   
 
-   
+<body>
+
+
+
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+            targetUrl = 'https://webdevdesigner.com/'
+        fetch(proxyUrl + targetUrl)
+            .then(blob => blob.json())
+            .then(data => {
+                console.table(data);
+                document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
+                return data;
+            })
+            .catch(e => {
+                console.log(e);
+                return e;
+            });
+    });  
+</script>
+
 </html>

@@ -1,2 +1,4 @@
 # tp-javascript-ecv
-Tp Javascript
+Christopher
+Bolard
+christopher.bolard@mail-ecv.fr 
