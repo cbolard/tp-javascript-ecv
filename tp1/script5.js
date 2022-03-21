@@ -1,11 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    var req = new XMLHttpRequest();
-    req.open('GET', 'http://www.google.com', false);
-    req.send(null);
-    if(req.status == 200)
-      alert(req.responseText);
-
-
+  $.ajax({ url: 'https://stackoverflow.com/questions/6375461/get-html-code-using-javascript-with-a-url', success: function(data) { alert(data); } });
 });
