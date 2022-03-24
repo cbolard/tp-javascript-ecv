@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3- Exercice 2
+    </title>
+    <style>
+        .square {
+            height: 120px;
+            width: 120px;
+            margin: 20px;
+            background: black;
+        }
+    </style>
+</head>
+
+
+<body>
+
+</body>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        let min = 5;
+        let max = 15;
+
+        let number = getRndInteger(min, max)
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+
+        for (i = 1; i <= number; i++) {
+            var div = document.createElement("div");
+            div.style.width = "100%";
+            div.style.height = "50px";
+
+            let color = getRandomColor()
+            console.log(color)
+            
+            div.style.background = color;
+            document.body.appendChild(div);
+        }
+
+        console.log(number)
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 3- Exercice 4</title>
+</head>
+
+<body>
+
+</body>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        window.onkeyup = keyup;
+
+        let inputTextValue;
+
+        let ul = document.createElement("ul");
+        document.body.appendChild(ul);
+
+        function keyup(e) {
+            
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode(e.key));
+            ul.prepend(li);
+
+            let sizelist =ul.getElementsByTagName("li").length;
+
+            listItems=ul.getElementsByTagName("li");
+            
+
+            if(sizelist == 20){
+
+                var last = listItems[listItems.length - 1];
+                last.parentNode.removeChild(last);
+
+            }
+                
+                
+        }
+
+
+
+    });
+
+
+</script>
+
+</html>
