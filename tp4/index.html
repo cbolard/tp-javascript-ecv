@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP4 - index</title>
+</head>
+
+<body>
+
+    <p>Fonction revert : Hello I'm Robert !</p>
+    <p id="revertedString"></p> <br>
+
+    <p>Fonction ucFirst : hello</p>
+    <p id="ucFirstResult"></p> <br>
+
+    <p>Fonction capitalize : hello i'm robert !</p>
+    <p id="capitalizeResult"></p> <br>
+
+    <p>Fonction pascalCase : sentence in pascalCase</p>
+    <p id="pascalCaseResult"></p> <br>
+
+    <p>Fonction palindrome : kayak</p>
+    <p id="palindromeResult"></p> <br>
+
+    <p>Fonction findLongestWord : Le chemin le plus court n'est pas toujours le meilleur</p>
+    <p id="findLongestWordResult"></p> <br>
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        function revert(str) {
+
+            let splitString = str.split("");
+
+            let reverseArray = splitString.reverse();
+
+            let joinArray = reverseArray.join("");
+
+            return joinArray;
+
+        }
+
+        function ucFirst(word) {
+
+            let firstLetter = word.slice(0, 1).toUpperCase();
+
+            let lettersleft = word.slice(1);
+
+            let res = firstLetter + lettersleft;
+
+            return res;
+
+        }
+
+        function capitalize(str) {
+
+            let splitString = str.split(" ");
+
+            let majArray = [];
+
+            splitString.forEach(element => {
+                let firstLetter = element.slice(0, 1).toUpperCase();
+
+                let lettersleft = element.slice(1);
+
+                let res = firstLetter + lettersleft;
+
+                majArray.push(res)
+            });
+
+            let joinArray = majArray.join(" ");
+
+            return joinArray;
+
+        }
+
+        function pascalCase(str) {
+
+            let splitString = str.split(" ");
+
+            let majArray = [];
+
+            splitString.forEach(element => {
+                let firstLetter = element.slice(0, 1).toUpperCase();
+
+                let lettersleft = element.slice(1);
+
+                let res = firstLetter + lettersleft;
+
+                majArray.push(res)
+            });
+
+            let joinArray = majArray.join("");
+
+            return joinArray;
+
+        }
+
+        function palindrome(str) {
+
+            let splitString = str.split("");
+
+            let reverseArray = splitString.reverse();
+
+            let joinArray = reverseArray.join("");
+
+            if(str == joinArray){
+                console.log(true)
+                return true
+            } else {
+                console.log(false)
+                return false
+            }
+
+        }
+
+        function findLongestWord(str) {
+
+            console.log(str)
+
+            let splitString = str.split(" ");
+
+            let longerWord = splitString[0];
+
+
+            splitString.forEach(element => {
+
+                if(element.length > longerWord.length){
+                    longerWord = element
+                }
+
+            });
+
+            return longerWord;
+
+        }
+
+
+        let reverted = revert("Hello I'm Robert !");
+        let ucFirsted = ucFirst("hello")
+        let capitalized = capitalize("hello i'm robert !")
+        let pascalCased = pascalCase("sentence in pascalCase")
+        let palindromed = palindrome("kayak")
+        let findLongestWorded = findLongestWord("Le chemin le plus court n'est pas toujours le meilleur")
+
+        document.getElementById("revertedString").innerHTML = reverted
+        document.getElementById("ucFirstResult").innerHTML = ucFirsted
+        document.getElementById("capitalizeResult").innerHTML = capitalized
+        document.getElementById("pascalCaseResult").innerHTML = pascalCased
+        document.getElementById("palindromeResult").innerHTML = palindromed
+        document.getElementById("findLongestWordResult").innerHTML = findLongestWorded
+
+    });
+</script>
+
+</html>
+<!-- 1. Créer une fonction revert(str) qui inverse une chaîne de caractère et la retourne
+2. Ecrire une fonction ucFirst(word) qui transforme la première lettre d’une chaine de caractère en majuscule
+3. Ecrire une fonction capitalize(str) qui transforme chaque première lettre de chaque mot en majuscule
+4. Ecrire une fonction pascalCase(str) qui transforme chaque première lettre de chaque mot en majuscule et
+supprime les espaces
+5. Créer une fonction palindrome(str) qui vérifie si un mot est un palindrome et retourne un booléen
+6. Écrire une fonction findLongestWord(str) qui permet de trouver le mot le long plus d’une chaîne de caractère -->
