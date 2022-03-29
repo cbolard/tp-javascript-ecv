@@ -27,18 +27,18 @@
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
 
-        let min = 5;
-        let max = 15;
+        const min = 5;
+        const max = 15;
 
-        let number = getRndInteger(min, max)
+        const number = getRndInteger(min, max)
 
         function getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
         function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
+            const letters = '0123456789ABCDEF';
+            let color = '#';
             for (var i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
@@ -46,13 +46,13 @@
         }
 
         for (i = 1; i <= number; i++) {
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             div.style.width = "100%";
             div.style.height = "50px";
 
             let color = getRandomColor()
             console.log(color)
-            
+
             div.style.background = color;
             document.body.appendChild(div);
         }
@@ -61,10 +61,10 @@
 
         document.querySelectorAll('div').forEach(item => {
             let colorOrigin = item.style.background;
-                console.log(colorOrigin)
+            console.log(colorOrigin)
             item.addEventListener('click', event => {
 
-                if(item.style.background != "red") {
+                if (item.style.background != "red") {
                     item.style.background = "red"
                 } else {
                     item.style.background = colorOrigin

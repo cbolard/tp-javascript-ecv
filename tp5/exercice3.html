@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3 - TP 5</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // . Créer une function intersection(arr,arr2), fonction qui calcule l’intersection entre 2 tableaux (Number, String)
+
+    function intersection(first, second) {
+        let newTab = []; for (var i = 0; i < first.length; i++) {for (var j = 0; j < second.length; j++) {if (first[i] == second[j]) {newTab.push(first[i])}}} return newTab; 
+    }
+
+    const first = [0, 2, 4, 6, 8, 8];
+    const second = [1, 2, 3, 4, 5, 6];
+    console.log(intersection(first, second)) // [2, 4, 6]
+</script>
+</html>

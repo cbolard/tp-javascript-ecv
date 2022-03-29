@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1 - TP 5</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+
+        function getHashTags(str) {
+
+           return str.toLowerCase().split(" ").map(i => '#' + i).sort((function(a, b){ return b.length - a.length})).slice(0, 3);
+
+            }
+
+            console.log(getHashTags("How The Avocado Has Became The Fruit of the Global Trade ?"));
+            console.log(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"));
+            console.log(getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit"));
+            console.log(getHashTags("Visualizing Science"));
+
+        });
+
+
+
+</script>
+
+</html>

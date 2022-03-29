@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2 - TP 5</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // Créer une fonction qui supprime les valeurs dupliquées dans un tableau (Number, String)
+
+    function removeDuplicates(tab) {
+        tab.sort().forEach(element => { if (element == tab[tab.indexOf(element) + 1]) {tab.splice(tab.indexOf(element), 1)}});return tab
+    }
+
+
+    const tab = [0, 2, 4, 6, 8, 8]
+    
+    console.log(removeDuplicates(tab)) // [0, 2, 4, 6, 8]
+</script>
+
+</html>
