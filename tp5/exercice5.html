@@ -15,12 +15,12 @@
     // nombre d'articles dans un groupe, et qui renvoie le nombre de permutations (combinaisons) d'articles que vous
     // pourriez obtenir en prenant un article de chaque groupe.
 
-    function combination(...args) {
+    function combinations(...args) {
         let result = 1; for (let i = 0; i < args.length; i++) {result *= args[i];} return result;        
     }
 
-    console.log(combination(2, 3)); // 6
-    console.log(combination(3, 7, 4)); // 84
-    console.log(combination(2, 3, 4, 5)); // 120
+    console.log(combinations(2, 3)); // 6
+    console.log(combinations(3, 7, 4)); // 84
+    console.log(combinations(2, 3, 4, 5)); // 120
 </script>
 </html>
