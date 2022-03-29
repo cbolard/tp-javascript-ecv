@@ -17,9 +17,22 @@
 
     document.addEventListener("DOMContentLoaded", function (event) {
 
-       let width = window.screen.width; 
 
-       console.log(window.screen.height)
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+    
+        document.body.innerHTML += "<p>Window size: " + windowWidth + " x " + windowHeight + "</p>";
+
+        window.addEventListener("resize", function (event) {
+
+            windowWidth = window.innerWidth;
+            windowHeight = window.innerHeight;
+
+            document.body.innerHTML = "<p>Window size: " + windowWidth + " x " + windowHeight + "</p>";
+
+        });
+
+
 
 
 
