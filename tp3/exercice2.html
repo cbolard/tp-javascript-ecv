@@ -37,9 +37,9 @@
         }
 
         function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
             return color;
@@ -47,18 +47,16 @@
 
 
         for (i = 1; i <= number; i++) {
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             div.style.width = "100%";
             div.style.height = "50px";
 
             let color = getRandomColor()
-            console.log(color)
             
             div.style.background = color;
             document.body.appendChild(div);
         }
 
-        console.log(number)
     });
 </script>
 
