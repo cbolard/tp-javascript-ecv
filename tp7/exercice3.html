@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3 - tp7</title>
+</head>
+<body>
+    
+
+
+    <script>
+        window.onload = function() {
+            // Créez une fonction qui prend en paramètre une date de naissance d’une personne au format DD/MM/YYYY. Si la personne est mineure, la promesse échoue, sinon elle renvoie true
+            function checkAge(birthDate) {
+                var birthDate = new Date(birthDate);
+                var currentDate = new Date();
+                var age = currentDate.getFullYear() - birthDate.getFullYear();
+                if (age < 18) {
+                    return Promise.reject(new Error('La personne doit être majeur'));
+                } else {
+                    return Promise.resolve(true);
+                }
+            }
+
+            checkAge('01/01/2000')
+                .then(function(result) {
+                    console.log(result);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+
+            checkAge('01/01/2008')
+                .then(function(result) {
+                    console.log(result);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+
+        };
+    </script>
+</body>
+</html>

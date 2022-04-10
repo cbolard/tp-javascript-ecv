@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1 - tp7</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        window.onload = function () {
+            // Créez une fonction qui prend en paramètre une chaîne de caractère, si la chaîne de caractère fait plus de 20 caractères, la promesse échoue, sinon la fonction renvoie true
+            function checkLength(str) {
+                if (str.length > 20) {
+                    return Promise.reject(new Error('La chaîne de caractère doit faire moins de 20 caractères'));
+                } else {
+                    return Promise.resolve(true);
+                }
+            }
+
+            checkLength('Hello world')
+                .then(function (result) {
+                    console.log(result);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            checkLength('Hello world and hello universe')
+                .then(function (result) {
+                    console.log(result);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        };
+    </script>
+</body>
+
+</html>

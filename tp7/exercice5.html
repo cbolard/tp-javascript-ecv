@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2 - tp7</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+
+        // Créer une fonction qui prend en paramètre une date de naissance d’une personne au format DD/MM/YYYY. Si la personne est mineure, la promesse échoue, sinon elle renvoie true.
+        async function checkAge(date) {
+
+            try {
+                const agePromise = checkAgePromise(date);
+                console.log(agePromise);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        // Créer une fonction qui prend en paramètre deux int, si la première variable est supérieure à la seconde, la promesse renvoie la différence entre les deux variables, sinon elle échoue.
+        async function checkDifference(a, b) {
+
+            try {
+                const differencePromise = checkDifferencePromise(a, b);
+                console.log(differencePromise);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        // Créer une fonction qui prend en paramètre une chaîne de caractère, si la chaîne de caractère fait plus de 20 caractères, la promesse échoue, sinon elle renvoie true.
+        async function checkLength(str) {
+
+            try {
+                const lengthPromise = checkLengthPromise(str);
+                console.log(lengthPromise);
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+
+        const checkAgePromise = (date) => {
+            return new Promise((resolve, reject) => {
+                if (date < 18) {
+                    reject(new Error('La personne doit être majeur'));
+                } else {
+                    resolve(true);
+                }
+            });
+        }
+
+        const checkDifferencePromise = (a, b) => {
+            return new Promise((resolve, reject) => {
+                if (a > b) {
+                    resolve(a - b);
+                } else {
+                    reject(new Error('la première variable doit être supérieure à la seconde'));
+                }
+            });
+        }
+
+        const checkLengthPromise = (str) => {
+            return new Promise((resolve, reject) => {
+                if (str.length > 20) {
+                    reject(new Error('La chaîne de caractère doit faire moins de 20 caractères'));
+                } else {
+                    resolve(true);
+                }
+            });
+        }
+
+        checkAge('01/01/2000')
+        checkDifference(10, 5)
+        checkLength('Bonjour')
+
+
+
+    </script>
+</body>
+
+</html>

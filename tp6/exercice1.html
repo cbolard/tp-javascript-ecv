@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tp 6 - Code fiscale</title>
+</head>
+
+<body>
+
+    // Exercice 1 :
+
+    // En Italie, chaque personne possède un code d'identification unique délivré par l'administration fiscale nationale
+    après l'enregistrement de la
+    // naissance : le code fiscal (Codice Fiscale). Consultez la page https://en.wikipedia.org/wiki/Italian_fiscal_code
+    pour plus d’informations
+
+    // Vous aurez à disposition un objet contenant les données personnelles d'une personne (nom, prénom, sexe et date de
+    naissance), Créer une
+    // fonction fiscalCode qui renvoie les 11 caractères du code sous forme de chaîne de caractères en suivant ces
+    étapes :
+
+    ___________________________________________________________________________________________________________________________________________________
+    ___________________________________________________________________________________________________________________________________________________
+
+    // Générez 3 lettres majuscules à partir du nom de famille, s’il y a:
+
+    // Au moins 3 consonnes,prendre les 3 premières consonnes. (Newman -> NWM).
+    // Moins de 3 consonnes, les voyelles remplaceront les caractères manquants dans le même ordre qu'ils apparaissent
+    (Fox -> FXO | Hope ->
+    // HPO).
+    // Moins de trois lettres, "X" prendra le troisième emplacement après la consonneCountName et la voyelle (Yu ->
+    YUX).
+
+    ___________________________________________________________________________________________________________________________________________________
+
+
+    // Générez 3 lettres majuscules à partir du nom, s’il y a :
+
+    // Exactement 3 consonnes ,les consonnes sont utilisées dans l'ordre où elles apparaissent (Matt -> MTT).
+    // Plus de 3 consonnes , la première, troisième et quatrième consonnes sont utilisées (Samantha -> SNT | Thomas ->
+    TMS).
+    // Moins de 3 consonnes, les voyelles remplaceront les caractères manquants dans le même ordre qu'ils apparaissent
+    (Bob -> BBO | Paula -> PLA).
+    // Moins de trois lettres, "X" prendra le troisième emplacement après la consonneCount et la voyelle (Al -> LAX).
+
+    ___________________________________________________________________________________________________________________________________________________
+
+    // Générez 2 chiffres, 1 lettre et 2 nombres à partir de la date de naissance et du sexe :
+
+    // Prenez les deux derniers chiffres de l'année de naissance (1985 -> 85).
+
+    ___________________________________________________________________________________________________________________________________________________
+
+    // Générez une lettre correspondant au mois de naissance (janvier -> A | décembre -> T) en utilisant la table de
+    conversion incluse dans le code.
+
+    // Pour les hommes, prenez le jour de naissance en ajoutant un zéro au début s'il est inférieur à 10 (tout 9e jour
+    -> 09 | tout 20e jour -> 20).
+    // Pour les femmes, prenez le jour de naissance et ajoutez 40 (tout 9e jour -> 49 | tout 20e jour -> 60).
+
+    // Les lettres de code doivent être en majuscules.
+    // La date de naissance est indiquée dans le format J/M/AAAA.
+    // Y n'est pas une voyelle.
+
+    ___________________________________________________________________________________________________________________________________________________
+
+    // La table de conversion des mois est la suivante :
+    // Janvier = A
+    // Février = B
+    // Mars = C
+    // Avril = D
+    // Mai = E
+    // Juin = H
+    // Juillet = L
+    // Août = M
+    // Septembre = P
+    // Octobre = R
+    // Novembre = S
+    // Décembre = T
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            const voyelles = ['A', 'E', 'I', 'O', 'U'];
+            const consonnes = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
+            
+            function fiscalCode(person) {
+                let name = person.name.toUpperCase();
+                let surname = person.surname.toUpperCase();
+                let gender = person.gender;
+                let dob = person.dob;
+
+                let consonneCountName = 0;
+                let consonneCountSurname = 0;
+                let voyelleCountName = 0;
+                let voyelleCountSurname = 0;
+
+                let consonnesTab = [];
+                let consonnesTabSurname = [];
+                let voyellesTab = [];
+                let voyellesTabSurname = [];
+
+                for (let i = 0; i < name.length; i++) {
+                    if (consonnes.includes(name[i])) {
+                        consonneCountName++;
+
+                        consonnesTab.push(name[i]);
+                    } else if (voyelles.includes(name[i])) {
+                        voyelleCountName++;
+                        voyellesTab.push(name[i]);
+                    }
+                }
+
+                let nameConvert = "";
+
+                if (consonneCountName == 3) {
+                    nameConvert = consonnesTab.join("");
+
+                } else if (consonneCountName < 3) {
+
+                    nameConvert = consonnesTab.join("") + voyellesTab[0];
+
+                } else if (consonneCountName > 3) {
+                    nameConvert = consonnesTab[0] + consonnesTab[2] + consonnesTab[3];
+                }
+
+
+                for (let i = 0; i < surname.length; i++) {
+                    if (consonnes.includes(surname[i])) {
+                        consonneCountSurname++;
+                        consonnesTabSurname.push(surname[i]);
+                    } else if (voyelles.includes(surname[i])) {
+                        voyelleCountSurname++;
+                        voyellesTabSurname.push(surname[i]);
+                    }
+                }
+
+
+                let surnameConvert = "";
+
+                if (consonneCountSurname >= 3) {
+                    surnameConvert = consonnesTabSurname.join("");
+                    
+                } else if (consonneCountSurname < 3 && surname.length >= 3) {
+                    surnameConvert = consonnesTabSurname.join("") + voyellesTabSurname[0];
+                } else if (surname.length < 3) {
+                    surnameConvert = consonnesTabSurname[0] + voyellesTabSurname[0] + "X";
+                }
+
+                let dobTab = [];
+
+                dob.split("/").forEach(function (item) {
+                    dobTab.push(item);
+                });
+
+                let dobYear;
+                let dobMonth;
+                let dobDay;
+
+                dobDay = dobTab[0];
+
+                dobMonth = dobTab[1];
+
+                dobYear = dobTab[2];
+
+                dobYearConvert = dobYear.substring(dobYear.length - 2, dobYear.length);
+
+
+                let dobMonthConvert = "";
+
+
+                switch (dobMonth) {
+                    case "1":
+                        dobMonthConvert = "A";
+                        break;
+
+                    case "2":
+                        dobMonthConvert = "B";
+                        break;
+
+                    case "3":
+                        dobMonthConvert = "C";
+                        break;
+
+                    case "4":
+                        dobMonthConvert = "D";
+                        break;
+
+                    case "5":
+                        dobMonthConvert = "E";
+                        break;
+
+                    case "6":
+                        dobMonthConvert = "H";
+                        break;
+
+                    case "7":
+                        dobMonthConvert = "L";
+                        break;
+
+                    case "8":
+                        dobMonthConvert = "M";
+                        break;
+
+                    case "9":
+                        dobMonthConvert = "P";
+                        break;
+
+                    case "10":
+                        dobMonthConvert = "R";
+                        break;
+
+                    case "11":
+                        dobMonthConvert = "S";
+                        break;
+
+                    case "12":
+                        dobMonthConvert = "T";
+                        break;
+                }
+
+                let dobDayConvert = "";
+                let genderConvert = "";
+
+                if (gender == "M") {
+                    if (dobDay <= 10) {
+                        dobDayConvert = "0".concat(dobDay);
+                    } else {
+                        dobDayConvert = dobDay;
+                    }
+                } else if (gender == "F") {
+                    dobDayConvert = parseInt(dobDay) + 40
+
+                }
+
+                let result = surnameConvert + nameConvert + dobYearConvert + dobMonthConvert + dobDayConvert;
+                console.log(result);
+                return result;
+
+            }
+
+
+            let person = {
+                surname: "Yu",
+                name: "Helen",
+                gender: "F",
+                dob: "1/12/1950"
+            }
+
+            let person2 = {
+                name: "Mickey",
+                surname: "Mouse",
+                gender: "M",
+                dob: "16/1/1928"
+            }
+
+            let person3 = {
+                name: "Matt",
+                surname: "Edabit",
+                gender: "M",
+                dob: "1/1/1900"
+            }
+
+            fiscalCode(person)
+            fiscalCode(person2)
+            fiscalCode(person3)
+        });
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

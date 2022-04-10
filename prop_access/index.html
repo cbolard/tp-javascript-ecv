@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercice bonus : prop_access</title>
+</head>
+<body>
+
+
+    <script>
+// Prop access :
+// Écrire une fonction prop_access(object, path) qui prend en paramètre un chemin et un objet et retourne la valeur associée.
+// Si l’attribut n'existe pas alors retourné le chemin + “not exist” ( ex: “post.comments.type not exist”
+// Si le chemin est vide Renvoyez l’objet complet.
+
+
+function prop_access(object, path) {
+
+
+    if (path === "") {
+        return object;
+    }
+
+    if (path.includes(".")) {
+        let pathArray = path.split(".");
+        let currentPath = pathArray.shift();
+
+        if (object[currentPath] === undefined) {
+            return `${currentPath} not exist`;
+        }
+        return prop_access(object[currentPath], pathArray.join("."));
+
+
+    } else {
+
+
+        if (object[path] === undefined) {
+            return `${path} not exist`;
+        }
+        return object[path];
+        
+    }
+}
+
+console.log(prop_access({
+    "animal":{
+        "type":{
+            "name": "dog"
+        }
+    }
+}, 
+"animal.type.name")); // dog
+
+
+console.log(prop_access({
+    "animal":
+    {
+        "type":{
+            "name": "dog"
+        }
+    }
+}, "animal.type"
+)); // { name: "dog" }
+
+console.log(prop_access({
+    "animals":[
+    {
+        "type":{
+            "name": "dog"
+        }
+    },
+    {
+        "type":{
+            "name": "cat"
+        }
+    }
+   ]
+}, "animals.1.type"
+)); // { name: "cat" }
+
+    </script>
+    
+</body>
+</html>

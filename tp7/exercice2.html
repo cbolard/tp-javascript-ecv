@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2 - tp7</title>
+</head>
+<body>
+    
+
+
+    <script>
+        window.onload = function() {
+// Créez une fonction qui prend en paramètre deux int, si la première variable est supérieure à la seconde, la promesse renvoie la différence entre les deux variables, sinon elle échoue.
+            function checkDifference(a, b) {
+                if (a > b) {
+                    return Promise.resolve(a - b);
+                } else {
+                    return Promise.reject(new Error('la première variable doit être supérieure à la seconde'));
+                }
+            }
+
+            checkDifference(5, 3)
+                .then(function(result) {
+                    console.log(result);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+            
+            checkDifference(3, 5)
+                .then(function(result) {
+                    console.log(result);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+
+        };
+    </script>
+</body>
+</html>
